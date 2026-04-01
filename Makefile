@@ -7,7 +7,9 @@ CFLAGS		= -Wall -Wextra -Werror
 SRCS		= push_swap.c \
 			  pushop.c \
 			  rotateop.c \
-			  state.c
+			  state.c \
+			  revrotateop.c \
+			  swapop.c
 
 # Libft sources
 LIBFT_SRCS	= libft/ft_atoi.c \

@@ -26,7 +26,7 @@ static int	has_duplicate(int *list, int size, int value)
 	return (0);
 }
 
-static void	exit_error(void)
+void	exit_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
@@ -50,19 +50,52 @@ void	fill_stack_a(int *list_a, int argc, char **argv)
 	}
 }
 
-int	push_swap(int *list_a, size)
+int	push_swap(int *list_a, int size)
 {
 	int	*list_b;
-	int	**;
-	int	*state_a[4];
-	int	*state_b[4];
+	int	state_a[4];
+	int	state_b[4];
 
 	list_b = malloc(sizeof(int) * size);
 	if (!list_a)
 		return (1);
-	push_a(list_b, list_a, &top, &bottom);
+	init_state(state_a, state_b, size);
+	push_b(list_a, list_b, state_a, state_b);
+	push_b(list_a, list_b, state_a, state_b);
+	push_b(list_a, list_b, state_a, state_b);
+	push_b(list_a, list_b, state_a, state_b);
+	push_b(list_a, list_b, state_a, state_b);
+	swap_double(list_a, state_a, list_b, state_b);
+	print_list(list_a, list_b, state_a, state_b);
 	free(list_b);
-	return(list_a);
+	return(1);
+}
+
+void	print_list(int *list_a, int *list_b, int *state_a, int *state_b)
+{
+	int i;
+	i = 0;
+	write(1, "list a\n", 7);
+	if (state_a[2] == 0)
+		write(1, "liste vide\n", 11);
+	while ( i < state_a[2])
+	{
+		ft_putnbr_fd(list_a[(state_a[0] + i) % state_a[3]], 1);
+		write(1, "-", 1);
+		i++;
+	}
+	write(1, "\n", 1);
+	write(1, "list b\n", 7);
+	i = 0;
+	if (state_b[2] == 0)
+		write(1, "liste vide\n", 11);
+	while ( i < state_b[2])
+	{
+		ft_putnbr_fd(list_b[(state_b[0] + i) % state_b[3]], 1);
+		write(1, "-", 1);
+		i++;
+	}
+	write(1, "\n", 1);
 }
 
 int	main(int argc, char **argv)
