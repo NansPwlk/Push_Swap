@@ -9,7 +9,11 @@ SRCS		= push_swap.c \
 			  rotateop.c \
 			  state.c \
 			  revrotateop.c \
-			  swapop.c
+			  swapop.c \
+			  greed_sort.c \
+			  tools_greed.c \
+			  more_tools.c \
+			  greedy_path.c
 
 # Libft sources
 LIBFT_SRCS	= libft/ft_atoi.c \
