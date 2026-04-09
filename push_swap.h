@@ -51,4 +51,16 @@ int			*mat_path(int *list_a, int *list_b, int state[2][4], int *matrix);
 void		minus_one(int *matrix);
 void		make_in_order(int *list_a, int state[2][4]);
 int			get_targ(int b_val, int *list_a, int state[2][4], int i);
+void		select_sort(int *list_a, int *list_b, int state[2][4]);
+void		chunk_sort(int *list_a, int *list_b, int state[2][4]);
+int			*index_chunk(int *list_a, int state[2][4]);
+int			chunk_repart(int state[2][4]);
+void		order_in_make(int *list_b, int state[2][4]);
+int			*one_chunk(int state[2][4], int *cpy_lst);
+void		push_chunk(int *list_a, int *list_b, int state[2][4], int *opt_chk);
+void		do_i_rotate(int *list_b, int state[2][4], int *opt_chk);
+int			*get_cpy_sort(int *lst, int state[2][4], int *cpy_lst, int is_ord);
+int			is_in_chunk(int value, int *opt_chk);
+float		compute_disorder(int *list_a, int state[2][4]);
+void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float	disord);
 #endif

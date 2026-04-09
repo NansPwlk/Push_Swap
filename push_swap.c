@@ -34,9 +34,11 @@ void	fill_stack_a(int *list_a, int argc, char **argv)
 	i = 0;
 	while (i < argc - 1)
 	{
-		tmp = ft_atoi(argv[i + 1]);
-		if (tmp < -2147483648 || tmp > 2147483647)
+		if (ft_strncmp(argv[i + 1], "-2147483648", 11) == 0)
 			exit_error();
+		if (ft_strncmp(argv[i + 1], "2147483647", 10) == 0)
+			exit_error();
+		tmp = ft_atoi(argv[i + 1]);
 		if (has_duplicate(list_a, i, (int)tmp))
 			exit_error();
 		list_a[i] = (int)tmp;
@@ -46,14 +48,16 @@ void	fill_stack_a(int *list_a, int argc, char **argv)
 
 int	push_swap(int *list_a, int size)
 {
-	int	*list_b;
-	int	state[2][4];
+	int		*list_b;
+	int		state[2][4];
+	float	disorder;
 
 	list_b = malloc(sizeof(int) * size);
 	if (!list_b)
 		return (1);
 	init_state(state, size);
-	greed_sort(list_a, list_b, state);
+	disorder = compute_disorder(list_a, state);
+	adapt_choice(list_a, list_b, state, disorder);
 	print_list(list_a, list_b, state);
 	free(list_b);
 	return (1);
@@ -89,17 +93,17 @@ void	print_list(int *list_a, int *list_b, int state[2][4])
 
 int	main(int argc, char **argv)
 {
-	int	*list_a;
+	int	*stack_a;
 	int	size;
 
 	if (argc < 2)
 		return (0);
 	size = argc - 1;
-	list_a = malloc(sizeof(int) * size);
-	if (!list_a)
+	stack_a = malloc(sizeof(int) * size);
+	if (!stack_a)
 		return (1);
-	fill_stack_a(list_a, argc, argv);
-	push_swap(list_a, size);
-	free(list_a);
+	fill_stack_a(stack_a, argc, argv);
+	push_swap(stack_a, size);
+	free(stack_a);
 	return (0);
 }

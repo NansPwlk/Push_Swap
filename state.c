@@ -60,3 +60,31 @@ void	make_in_order(int *list_a, int state[2][4])
 	while (list_a[state[0][0]] != min)
 		rotate_a(list_a, state, 0);
 }
+
+void	order_in_make(int *list_b, int state[2][4])
+{
+	int	i;
+	int	max;
+	int	index_max;
+	int	current_idx;
+
+	i = -1;
+	max = -2147483648;
+	while (++i < state[1][2])
+	{
+		current_idx = (state[1][0] + i) % state[1][3];
+		if (list_b[current_idx] > max)
+		{
+			max = list_b[current_idx];
+			index_max = i;
+		}
+	}
+	if (index_max > state[1][2] / 2)
+	{
+		while (list_b[state[1][0]] != max)
+			reverse_rotate_b(list_b, state, 0);
+		return ;
+	}
+	while (list_b[state[1][0]] != max)
+		rotate_b(list_b, state, 0);
+}

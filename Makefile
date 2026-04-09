@@ -13,12 +13,17 @@ SRCS		= push_swap.c \
 			  greed_sort.c \
 			  tools_greed.c \
 			  more_tools.c \
-			  greedy_path.c
+			  greedy_path.c \
+			  select_sort.c \
+			  chunk_sort.c \
+			  chunk_tools.c \
+			  disorder.c
 
 # Libft sources
 LIBFT_SRCS	= libft/ft_atoi.c \
 			  libft/ft_putchar_fd.c \
-			  libft/ft_putnbr_fd.c
+			  libft/ft_putnbr_fd.c \
+			  libft/ft_strncmp.c
 
 OBJS		= $(SRCS:.c=.o)
 LIBFT_OBJS	= $(LIBFT_SRCS:.c=.o)
