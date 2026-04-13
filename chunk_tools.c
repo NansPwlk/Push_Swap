@@ -61,3 +61,49 @@ int	chunk_repart(int state[2][4])
 		nb_chunk = 20;
 	return (nb_chunk);
 }
+
+void	repatriate_to_a(int *list_a, int *list_b, int state[2][4])
+{
+	int	debt;
+
+	debt = 0;
+	while (state[1][2] != 0)
+	{
+		order_in_make(list_b, state, &debt);
+		push_a(list_b, list_a, state);
+		if (debt == 1 && state[0][2] >= 2
+			&& list_a[state[0][0]] > list_a[(state[0][0] + 1) % state[0][3]])
+		{
+			swap_a(list_a, state, 0);
+			debt = 0;
+		}
+	}
+}
+
+void	get_podium(int *list_b, int state[2][4], int *i_max, int *i_max2)
+{
+	int	i;
+	int	max;
+	int	max2;
+
+	i = -1;
+	max = -2147483648;
+	max2 = -2147483648;
+	*i_max = 0;
+	*i_max2 = 0;
+	while (++i < state[1][2])
+	{
+		if (list_b[(state[1][0] + i) % state[1][3]] > max)
+		{
+			max2 = max;
+			*i_max2 = *i_max;
+			max = list_b[(state[1][0] + i) % state[1][3]];
+			*i_max = i;
+		}
+		else if (list_b[(state[1][0] + i) % state[1][3]] > max2)
+		{
+			max2 = list_b[(state[1][0] + i) % state[1][3]];
+			*i_max2 = i;
+		}
+	}
+}

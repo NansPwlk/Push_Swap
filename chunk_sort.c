@@ -32,11 +32,7 @@ void	chunk_sort(int *list_a, int *list_b, int state[2][4])
 	}
 	while (state[0][2] != 0)
 		push_b(list_a, list_b, state);
-	while (state[1][2] != 0)
-	{
-		order_in_make(list_b, state);
-		push_a(list_b, list_a, state);
-	}
+	repatriate_to_a(list_a, list_b, state);
 	free(cpy_lista);
 }
 
@@ -62,26 +58,26 @@ int	*one_chunk(int state[2][4], int *cpy_lst)
 
 void	push_chunk(int *list_a, int *list_b, int state[2][4], int *opt_chk)
 {
-	int	chunk_size;
 	int	pushed;
+	int	need_rb;
 
-	chunk_size = 0;
-	while (opt_chk[chunk_size] != 2147483647)
-		chunk_size++;
 	pushed = 0;
-	while (pushed < chunk_size)
+	need_rb = 0;
+	while (opt_chk[pushed] != 2147483647)
 	{
 		if (is_in_chunk(list_a[state[0][0]], opt_chk) == 1)
 		{
+			if (need_rb == 1)
+				rotate_b(list_b, state, 0);
 			push_b(list_a, list_b, state);
-			do_i_rotate(list_b, state, opt_chk);
+			need_rb = do_i_rotate(list_b, state, opt_chk);
 			pushed++;
 		}
 		else
-		{
-			rotate_a(list_a, state, 0);
-		}
+			need_rb = handle_miss(list_a, list_b, state, need_rb);
 	}
+	if (need_rb == 1)
+		rotate_b(list_b, state, 0);
 }
 
 int	is_in_chunk(int value, int *opt_chk)
@@ -98,7 +94,7 @@ int	is_in_chunk(int value, int *opt_chk)
 	return (0);
 }
 
-void	do_i_rotate(int *list_b, int state[2][4], int *opt_chk)
+int	do_i_rotate(int *list_b, int state[2][4], int *opt_chk)
 {
 	int	med;
 	int	i;
@@ -108,7 +104,6 @@ void	do_i_rotate(int *list_b, int state[2][4], int *opt_chk)
 		i++;
 	med = opt_chk[i / 2];
 	if (list_b[state[1][0]] <= med)
-	{
-		rotate_b(list_b, state, 0);
-	}
+		return (1);
+	return (0);
 }

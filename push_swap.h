@@ -55,12 +55,15 @@ void		select_sort(int *list_a, int *list_b, int state[2][4]);
 void		chunk_sort(int *list_a, int *list_b, int state[2][4]);
 int			*index_chunk(int *list_a, int state[2][4]);
 int			chunk_repart(int state[2][4]);
-void		order_in_make(int *list_b, int state[2][4]);
+void		order_in_make(int *list_b, int state[2][4], int *debt);
 int			*one_chunk(int state[2][4], int *cpy_lst);
 void		push_chunk(int *list_a, int *list_b, int state[2][4], int *opt_chk);
-void		do_i_rotate(int *list_b, int state[2][4], int *opt_chk);
+int			do_i_rotate(int *list_b, int state[2][4], int *opt_chk);
 int			*get_cpy_sort(int *lst, int state[2][4], int *cpy_lst, int is_ord);
 int			is_in_chunk(int value, int *opt_chk);
+void		get_podium(int *list_b, int state[2][4], int *i_max, int *i_max2);
+void		repatriate_to_a(int *list_a, int *list_b, int state[2][4]);
 float		compute_disorder(int *list_a, int state[2][4]);
-void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float	disord);
+void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float disord);
+int			handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb);
 #endif

@@ -61,30 +61,31 @@ void	make_in_order(int *list_a, int state[2][4])
 		rotate_a(list_a, state, 0);
 }
 
-void	order_in_make(int *list_b, int state[2][4])
+void	order_in_make(int *list_b, int state[2][4], int *debt)
 {
-	int	i;
-	int	max;
-	int	index_max;
-	int	current_idx;
+	int	i_max;
+	int	i_max2;
+	int	cost1;
+	int	cost2;
+	int	t_val;
 
-	i = -1;
-	max = -2147483648;
-	while (++i < state[1][2])
+	get_podium(list_b, state, &i_max, &i_max2);
+	cost1 = i_max;
+	if (i_max > state[1][2] / 2)
+		cost1 = state[1][2] - i_max;
+	cost2 = i_max2;
+	if (i_max2 > state[1][2] / 2)
+		cost2 = state[1][2] - i_max2;
+	if (*debt == 0 && cost2 < cost1)
 	{
-		current_idx = (state[1][0] + i) % state[1][3];
-		if (list_b[current_idx] > max)
-		{
-			max = list_b[current_idx];
-			index_max = i;
-		}
+		i_max = i_max2;
+		*debt = 1;
 	}
-	if (index_max > state[1][2] / 2)
-	{
-		while (list_b[state[1][0]] != max)
+	t_val = list_b[(state[1][0] + i_max) % state[1][3]];
+	if (i_max > state[1][2] / 2)
+		while (list_b[state[1][0]] != t_val)
 			reverse_rotate_b(list_b, state, 0);
-		return ;
-	}
-	while (list_b[state[1][0]] != max)
-		rotate_b(list_b, state, 0);
+	else
+		while (list_b[state[1][0]] != t_val)
+			rotate_b(list_b, state, 0);
 }

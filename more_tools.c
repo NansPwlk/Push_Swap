@@ -46,3 +46,12 @@ int	get_targ(int b_val, int *list_a, int state[2][4], int i)
 		return (ret[1]);
 	return (ret[0]);
 }
+
+int	handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb)
+{
+	if (need_rb == 1)
+		rotate_double(list_a, state, list_b);
+	else
+		rotate_a(list_a, state, 0);
+	return (0);
+}
