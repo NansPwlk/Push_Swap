@@ -13,10 +13,23 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <unistd.h>
+# include <stdarg.h>
+# include <stdio.h>
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_printf(const char *str, ...);
+void	ft_putcharb_fd(char c, int fd, int isopti, int *count);
+void	print_char(char c, int *count);
+void	print_string(char *str, int *count);
+void	print_pointer(void *ptr, int *count);
+void	base_16(unsigned long adr, int *count, char *base16);
+void	ft_printf_bis(const char *str, int *i, va_list *args, int *count);
+void	print_int_dec(int nbr, int *count, int size);
+void	print_unsigned(unsigned int nbr, int *count, int size);
+void	base_16x(unsigned int adr, int	*count, char *base16);
+void	print_percent(int *count);
 
 #endif

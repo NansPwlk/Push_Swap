@@ -63,7 +63,7 @@ int			*get_cpy_sort(int *lst, int state[2][4], int *cpy_lst, int is_ord);
 int			is_in_chunk(int value, int *opt_chk);
 void		get_podium(int *list_b, int state[2][4], int *i_max, int *i_max2);
 void		repatriate_to_a(int *list_a, int *list_b, int state[2][4]);
-float		compute_disorder(int *list_a, int state[2][4]);
+float		compute_disorder(int *list_a, int state[2][4], int who);
 void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float disord);
 int			handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb);
 #endif

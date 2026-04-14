@@ -12,17 +12,19 @@
 
 #include "push_swap.h"
 
-float	compute_disorder(int *list_a, int state[2][4])
+float	compute_disorder(int *list_a, int state[2][4], int who)
 {
-	float	disorder;
-	int		is_error;
-	int		total_pairs;
-	int		i;
-	int		j;
+	static	float	disorder;
+	int				is_error;
+	int				total_pairs;
+	int				i;
+	int				j;
 
 	i = 0;
 	is_error = 0;
 	total_pairs = state[0][3] * (state[0][1]) / 2;
+	if (who == 0)
+		return (disorder);
 	while (i < state[0][3])
 	{
 		j = i + 1;

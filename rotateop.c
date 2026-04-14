@@ -24,6 +24,7 @@ int	rotate_a(int *list_a, int state[2][4], int silence)
 	state[0][0] = (state[0][0] +1) % state[0][3];
 	if (silence == 0)
 		write(1, "ra\n", 3);
+	count_op(6);
 	return (1);
 }
 
@@ -39,6 +40,7 @@ int	rotate_b(int *list_b, int state[2][4], int silence)
 	state[1][0] = (state[1][0] + 1) % state[1][3];
 	if (silence == 0)
 		write(1, "rb\n", 3);
+	count_op(7);
 	return (1);
 }
 
@@ -47,5 +49,6 @@ int	rotate_double(int *list_a, int state[2][4], int *list_b)
 	rotate_a(list_a, state, 1);
 	rotate_b(list_b, state, 1);
 	write(1, "rr\n", 3);
+	count_op(8);
 	return (1);
 }

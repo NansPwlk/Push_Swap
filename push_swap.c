@@ -56,7 +56,7 @@ int	push_swap(int *list_a, int size)
 	if (!list_b)
 		return (1);
 	init_state(state, size);
-	disorder = compute_disorder(list_a, state);
+	disorder = compute_disorder(list_a, state, 1);
 	adapt_choice(list_a, list_b, state, disorder);
 	print_list(list_a, list_b, state);
 	free(list_b);

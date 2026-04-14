@@ -25,6 +25,7 @@ int	push_b(int *list_a, int *list_b, int state[2][4])
 	state[0][2]--;
 	state[0][0] = (state[0][0] + 1) % state[0][3];
 	write(1, "pb\n", 3);
+	count_op(4);
 	return (1);
 }
 
@@ -41,5 +42,6 @@ int	push_a(int *list_b, int *list_a, int state[2][4])
 	state[1][2]--;
 	state[1][0] = (state[1][0] + 1) % state[1][3];
 	write(1, "pa\n", 3);
+	count_op(5);
 	return (1);
 }

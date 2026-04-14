@@ -24,6 +24,7 @@ int	reverse_rotate_a(int *list_a, int state[2][4], int silence)
 	state[0][1] = (state[0][1] -1 + state[0][3]) % state[0][3];
 	if (silence == 0)
 		write(1, "rra\n", 4);
+	count_op(9);
 	return (1);
 }
 
@@ -39,6 +40,7 @@ int	reverse_rotate_b(int *list_b, int state[2][4], int silence)
 	state[1][1] = (state[1][1] -1 + state[1][3]) % state[1][3];
 	if (silence == 0)
 		write(1, "rrb\n", 4);
+	count_op(10);
 	return (1);
 }
 
@@ -47,5 +49,6 @@ int	revrot_double(int *list_a, int state[2][4], int *list_b)
 	reverse_rotate_a(list_a, state, 1);
 	reverse_rotate_b(list_b, state, 1);
 	write(1, "rrr\n", 4);
+	count_op(11);
 	return (1);
 }
