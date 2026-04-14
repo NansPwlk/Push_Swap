@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_xX_16.c                                      :+:      :+:    :+:   */
+/*   print_xuplo_16.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npawlak <npawlak@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:45:06 by npawlak           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:34 by npawlak          ###   ########.fr       */
+/*   Updated: 2026/04/14 14:07:30 by npawlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	base_16x(unsigned int adr, int	*count, char *base16)
 {
@@ -20,7 +20,7 @@ void	base_16x(unsigned int adr, int	*count, char *base16)
 	i = 0;
 	if (adr == 0)
 	{
-		ft_putchar_fd('0', 1, 0, count);
+		ft_putcharb_fd('0', 1, 0, count);
 		(*count)++;
 	}
 	while (adr > 0)
@@ -33,6 +33,6 @@ void	base_16x(unsigned int adr, int	*count, char *base16)
 	{
 		i--;
 		(*count)++;
-		ft_putchar_fd(buffer[i], 1, 0, count);
+		ft_putcharb_fd(buffer[i], 1, 0, count);
 	}
 }

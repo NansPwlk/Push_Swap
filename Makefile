@@ -1,51 +1,51 @@
-NAME        = push_swap
+NAME		= push_swap
 
-CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
 
-# Sources
-SRCS        = push_swap.c \
-              pushop.c \
-              rotateop.c \
-              state.c \
-              revrotateop.c \
-              swapop.c \
-              greed_sort.c \
-              tools_greed.c \
-              more_tools.c \
-              greedy_path.c \
-              select_sort.c \
-              chunk_sort.c \
-              chunk_tools.c \
-              disorder.c \
-			  benchmod.c
 
-OBJS        = $(SRCS:.c=.o)
+SRCS		= push_swap.c \
+			pushop.c \
+			rotateop.c \
+			state.c \
+			revrotateop.c \
+			swapop.c \
+			greed_sort.c \
+			tools_greed.c \
+			more_tools.c \
+			greedy_path.c \
+			select_sort.c \
+			chunk_sort.c \
+			chunk_tools.c \
+			disorder.c \
+			benchmod.c
 
-LIBFT_DIR   = libft
-LIBFT       = $(LIBFT_DIR)/libft.a
+OBJS		= $(SRCS:.c=.o)
 
-INCLUDES    = -I. -I $(LIBFT_DIR)
+LIBFT_DIR	= libft
+LIBFT		= $(LIBFT_DIR)/libft.a
 
-all:        $(NAME)
+INCLUDES	= -I. -I $(LIBFT_DIR)
 
-$(NAME):    $(LIBFT) $(OBJS)
-            $(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+all:		$(NAME)
+
+$(NAME):	$(LIBFT) $(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
-            @make -C $(LIBFT_DIR)
+			@make -C $(LIBFT_DIR)
 
-%.o:        %.c
-            $(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+%.o:		%.c
+			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-            rm -f $(OBJS)
-            @make clean -C $(LIBFT_DIR)
+			rm -f $(OBJS)
+			@make clean -C $(LIBFT_DIR)
 
-fclean:     clean
-            rm -f $(NAME)
-            @make fclean -C $(LIBFT_DIR)
+fclean:		clean
+			rm -f $(NAME)
+			@make fclean -C $(LIBFT_DIR)
 
-re:         fclean all
+re:			fclean all
 
-.PHONY:     all clean fclean re
+.PHONY:		all clean fclean re

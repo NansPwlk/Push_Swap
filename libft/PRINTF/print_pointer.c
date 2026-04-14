@@ -6,11 +6,11 @@
 /*   By: npawlak <npawlak@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:44:59 by npawlak           #+#    #+#             */
-/*   Updated: 2026/02/02 18:51:24 by npawlak          ###   ########.fr       */
+/*   Updated: 2026/04/14 14:07:17 by npawlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	print_pointer(void *ptr, int	*count)
 {
@@ -35,7 +35,7 @@ void	base_16(unsigned long adr, int	*count, char *base16)
 	i = 0;
 	if (adr == 0)
 	{
-		ft_putchar_fd('0', 1, 0, count);
+		ft_putcharb_fd('0', 1, 0, count);
 		(*count)++;
 	}
 	while (adr > 0)
@@ -48,6 +48,6 @@ void	base_16(unsigned long adr, int	*count, char *base16)
 	{
 		i--;
 		(*count)++;
-		ft_putchar_fd(buffer[i], 1, 0, count);
+		ft_putcharb_fd(buffer[i], 1, 0, count);
 	}
 }

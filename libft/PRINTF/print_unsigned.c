@@ -6,11 +6,11 @@
 /*   By: npawlak <npawlak@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:45:04 by npawlak           #+#    #+#             */
-/*   Updated: 2026/02/02 18:52:19 by npawlak          ###   ########.fr       */
+/*   Updated: 2026/04/14 14:07:26 by npawlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	print_unsigned(unsigned int nbr, int *count, int size)
 {
@@ -26,5 +26,5 @@ void	print_unsigned(unsigned int nbr, int *count, int size)
 	nbr_print[size] = (nbr % 10) + 48;
 	size++;
 	while (size-- > 0)
-		ft_putchar_fd(nbr_print[size], 1, 1, count);
+		ft_putcharb_fd(nbr_print[size], 1, 1, count);
 }

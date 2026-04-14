@@ -6,14 +6,14 @@
 /*   By: npawlak <npawlak@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:44:50 by npawlak           #+#    #+#             */
-/*   Updated: 2026/02/02 18:49:01 by npawlak          ###   ########.fr       */
+/*   Updated: 2026/04/14 14:06:59 by npawlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	print_char(char c, int *count)
 {
-	ft_putchar_fd(c, 1, 0, count);
+	ft_putcharb_fd(c, 1, 0, count);
 	(*count)++;
 }

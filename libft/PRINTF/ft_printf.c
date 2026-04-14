@@ -6,11 +6,11 @@
 /*   By: npawlak <npawlak@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:28:04 by npawlak           #+#    #+#             */
-/*   Updated: 2026/04/14 13:46:44 by npawlak          ###   ########.fr       */
+/*   Updated: 2026/04/14 14:06:54 by npawlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	ft_printf_bis(const char *str, int *i, va_list *args, int *count)
 {
@@ -29,7 +29,7 @@ void	ft_printf_bis(const char *str, int *i, va_list *args, int *count)
 	else if (str[*i] == 'X')
 		base_16x(va_arg(*args, int), count, "0123456789ABCDEF");
 	else if (str[*i] == '%')
-		print_pe+rcent(count);
+		print_percent(count);
 }
 
 int	ft_printf(const char *str, ...)
@@ -51,7 +51,7 @@ int	ft_printf(const char *str, ...)
 			ft_printf_bis(str, &i, &args, &count);
 		}
 		else
-			ft_putchar_fd(str[i], 1, 1, &count);
+			ft_putcharb_fd(str[i], 1, 1, &count);
 		i++;
 	}
 	va_end(args);

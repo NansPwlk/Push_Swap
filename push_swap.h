@@ -66,4 +66,6 @@ void		repatriate_to_a(int *list_a, int *list_b, int state[2][4]);
 float		compute_disorder(int *list_a, int state[2][4], int who);
 void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float disord);
 int			handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb);
+int 		*count_op(int wich_one);
+void		benchmod(int *lst_a, int state[2][4]);
 #endif

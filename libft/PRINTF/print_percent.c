@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_%sign.c                                      :+:      :+:    :+:   */
+/*   print_percent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npawlak <npawlak@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 16:44:47 by npawlak           #+#    #+#             */
-/*   Updated: 2026/02/02 18:34:21 by npawlak          ###   ########.fr       */
+/*   Updated: 2026/04/14 14:07:08 by npawlak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	print_percent(int *count)
 {
-	ft_putchar_fd('%', 1, 0, count);
+	ft_putcharb_fd('%', 1, 0, count);
 	(*count)++;
 }
