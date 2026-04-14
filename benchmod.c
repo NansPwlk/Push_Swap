@@ -46,15 +46,12 @@ void benchmod(int *lst_a, int state[2][4])
 	float disord;
 	int integer_part;
     int fractional_part;
+	int total_op[11];
 
+	total_op = count_op(12);
 	disord = compute_disorder(lst_a, state, 0);
 	integer_part = (int)disord;
-	fractional_part = (int)((disord - integer_part) * 100.0 + 0.5);
-	if (fractional_part >= 100)
-    {
-        integer_part++;
-        fractional_part -= 100;
-    }
+	fractional_part = (int)((disord - integer_part) * 100.0);
 	if (fractional_part < 10)
         ft_printf("Disorder: %d.0%d\n", integer_part, fractional_part);
     else
@@ -67,5 +64,9 @@ void benchmod(int *lst_a, int state[2][4])
 		ft_printf("Strategy: Complex /  O(n log n)");
 	else if (disord == 0)
 		ft_printf("Strategy: Adaptative");
-	ft_printf("total_ops : %d", count_op(12));
+	ft_printf("total_ops : %d", );
+	ft_printf("sa : %d, sb : %d, ss : %d", );
+	ft_printf("pa : %d, pb : %d", );
+	ft_printf("ra : %d, rb : %d, rr : %d", );
+	ft_printf("rra : %d, rrb : %d, rrr : %d", );
 }
