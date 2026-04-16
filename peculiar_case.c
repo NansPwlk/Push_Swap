@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-int *for_two(int *list_a, int state[2][4])
+int	*for_two(int *list_a, int state[2][4])
 {
 	if (list_a[state[0][0]] > list_a[(state[0][0] + 1) % state[0][3]])
 		swap_a(list_a, state, 0);
-	return(list_a);
+	return (list_a);
 }
 
-int *for_three(int *list_a, int state[2][4])
+int	*for_three(int *list_a, int state[2][4])
 {
-	int i;
-	int i_max;
-	int j;
+	int	i;
+	int	i_max;
+	int	j;
 
 	i = state[0][0];
 	i_max = state[0][0];
@@ -36,10 +36,10 @@ int *for_three(int *list_a, int state[2][4])
 	}
 	if (i_max == state[0][0])
 		rotate_a(list_a, state, 0);
-	else if(i_max == (state[0][0] + 1) % state[0][3])
+	else if (i_max == (state[0][0] + 1) % state[0][3])
 		reverse_rotate_a(list_a, state, 0);
 	for_two(list_a, state);
-	return(list_a);
+	return (list_a);
 }
 
 int	*for_four(int *list_a, int *list_b, int state[2][4])

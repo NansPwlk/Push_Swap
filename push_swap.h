@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 void		fill_stack_a(int *list_a, int argc, char **argv, int i);
-void		exit_error();
+void		exit_error(void);
 int			main(int argc, char **argv);
 int			push_swap(int *list_a, int size, int do_a_bench, int who);
 int			push_a(int *list_b, int *list_a, int state[2][4]);
@@ -65,14 +65,14 @@ void		repatriate_to_a(int *list_a, int *list_b, int state[2][4]);
 float		compute_disorder(int *list_a, int state[2][4], int who);
 void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float disord);
 int			handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb);
-int 		*count_op(int wich_one);
+int			*count_op(int wich_one);
 void		benchmod(int *lst_a, int state[2][4], int who);
 void		benchmod_op(int *tl_op);
 int			read_flag(int who);
 int			wich_flag(char *flag, char *flagbis);
 int			do_a_flag(int argc, char **argv, int who);
 void		init_flag(char **flag, char **flagbis, char **argv, int argc);
-int 		is_number(char *do_he);
+int			is_number(char *do_he);
 int			*for_two(int *list_a, int state[2][4]);
 int			*for_three(int *list_a, int state[2][4]);
 int			*for_four(int *list_a, int *list_b, int state[2][4]);

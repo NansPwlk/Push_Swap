@@ -45,7 +45,6 @@ int	rotate_b(int *list_b, int state[2][4], int silence)
 		write(1, "rb\n", 3);
 		count_op(7);
 	}
-
 	return (1);
 }
 

@@ -67,6 +67,6 @@ int	read_flag(int who)
 void	init_flag(char **flag, char **flagbis, char **argv, int argc)
 {
 	*flag = argv[1];
-    if (argc > 2)
-    	*flagbis = argv[2];
+	if (argc > 2)
+		*flagbis = argv[2];
 }

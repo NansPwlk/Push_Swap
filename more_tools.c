@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	exit_error()
+void	exit_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
@@ -56,16 +56,16 @@ int	handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb)
 	return (0);
 }
 
-int is_number(char *do_he)
+int	is_number(char *do_he)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (do_he[i] != '\0')
 	{
 		if (do_he[i] < '0' || do_he[i] > '9')
-			return(0);
+			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }

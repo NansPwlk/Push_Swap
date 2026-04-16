@@ -29,7 +29,7 @@ static int	has_duplicate(int *list, int size, int value)
 void	fill_stack_a(int *list_a, int argc, char **argv, int i)
 {
 	long	tmp;
-	int j;
+	int		j;
 
 	j = 0;
 	while (j < argc - 1 - i)
@@ -82,8 +82,8 @@ int	main(int argc, char **argv)
 {
 	int	*stack_a;
 	int	size;
-	int do_a_bench;
-	int i;
+	int	do_a_bench;
+	int	i;
 
 	i = 0;
 	if (argc < 2)
@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 	if (ft_strncmp(argv[1], "--", 2) == 0)
 	{
 		i = 1;
-		if(argc > 2 && ft_strncmp(argv[2], "--", 2) == 0)
+		if (argc > 2 && ft_strncmp(argv[2], "--", 2) == 0)
 			i = 2;
 	}
 	size = argc - 1 - i;
