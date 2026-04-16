@@ -23,8 +23,10 @@ int	reverse_rotate_a(int *list_a, int state[2][4], int silence)
 	state[0][0] = new_top;
 	state[0][1] = (state[0][1] -1 + state[0][3]) % state[0][3];
 	if (silence == 0)
+	{
 		write(1, "rra\n", 4);
-	count_op(9);
+		count_op(9);
+	}
 	return (1);
 }
 
@@ -39,8 +41,10 @@ int	reverse_rotate_b(int *list_b, int state[2][4], int silence)
 	state[1][0] = new_top;
 	state[1][1] = (state[1][1] -1 + state[1][3]) % state[1][3];
 	if (silence == 0)
+	{
 		write(1, "rrb\n", 4);
-	count_op(10);
+		count_op(10);
+	}
 	return (1);
 }
 

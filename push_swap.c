@@ -26,27 +26,31 @@ static int	has_duplicate(int *list, int size, int value)
 	return (0);
 }
 
-void	fill_stack_a(int *list_a, int argc, char **argv)
+void	fill_stack_a(int *list_a, int argc, char **argv, int i)
 {
-	int		i;
 	long	tmp;
+	int j;
 
-	i = 0;
-	while (i < argc - 1)
+	j = 0;
+	while (j < argc - 1 - i)
 	{
-		if (ft_strncmp(argv[i + 1], "-2147483648", 11) == 0)
+		if (!is_number(argv[j + 1 + i]))
+		{
+			free(list_a);
 			exit_error();
-		if (ft_strncmp(argv[i + 1], "2147483647", 10) == 0)
+		}
+		tmp = ft_atoi(argv[j + 1 + i], list_a);
+		if (has_duplicate(list_a, j, (int)tmp))
+		{
+			free(list_a);
 			exit_error();
-		tmp = ft_atoi(argv[i + 1]);
-		if (has_duplicate(list_a, i, (int)tmp))
-			exit_error();
-		list_a[i] = (int)tmp;
-		i++;
+		}
+		list_a[j] = (int)tmp;
+		j++;
 	}
 }
 
-int	push_swap(int *list_a, int size)
+int	push_swap(int *list_a, int size, int do_a_bench, int who)
 {
 	int		*list_b;
 	int		state[2][4];
@@ -57,53 +61,48 @@ int	push_swap(int *list_a, int size)
 		return (1);
 	init_state(state, size);
 	disorder = compute_disorder(list_a, state, 1);
-	adapt_choice(list_a, list_b, state, disorder);
-	print_list(list_a, list_b, state);
+	who = do_a_flag(1, NULL, 2);
+	if (do_a_bench == 1)
+	{
+		if (who == 0)
+			adapt_choice(list_a, list_b, state, disorder);
+		else
+			adapt_choice(list_a, list_b, state, who);
+		benchmod(list_a, state, who);
+	}
+	else if (who == 0)
+		adapt_choice(list_a, list_b, state, disorder);
+	else
+		adapt_choice(list_a, list_b, state, who);
 	free(list_b);
 	return (1);
-}
-
-void	print_list(int *list_a, int *list_b, int state[2][4])
-{
-	int	i;
-
-	i = 0;
-	write(1, "list a\n", 7);
-	if (state[0][2] == 0)
-		write(1, "liste vide\n", 11);
-	while (i < state[0][2])
-	{
-		ft_putnbr_fd(list_a[(state[0][0] + i) % state[0][3]], 1);
-		write(1, "-", 1);
-		i++;
-	}
-	write(1, "\n", 1);
-	write(1, "list b\n", 7);
-	i = 0;
-	if (state[1][2] == 0)
-		write(1, "liste vide\n", 11);
-	while (i < state[1][2])
-	{
-		ft_putnbr_fd(list_b[(state[1][0] + i) % state[1][3]], 1);
-		write(1, "-", 1);
-		i++;
-	}
-	write(1, "\n", 1);
 }
 
 int	main(int argc, char **argv)
 {
 	int	*stack_a;
 	int	size;
+	int do_a_bench;
+	int i;
 
+	i = 0;
 	if (argc < 2)
 		return (0);
-	size = argc - 1;
+	if (ft_strncmp(argv[1], "--", 2) == 0)
+	{
+		i = 1;
+		if(argc > 2 && ft_strncmp(argv[2], "--", 2) == 0)
+			i = 2;
+	}
+	size = argc - 1 - i;
 	stack_a = malloc(sizeof(int) * size);
 	if (!stack_a)
 		return (1);
-	fill_stack_a(stack_a, argc, argv);
-	push_swap(stack_a, size);
+	do_a_bench = do_a_flag(argc, argv, 0);
+	fill_stack_a(stack_a, argc, argv, i);
+	if (argc > 3 && argv[3][1] == '-')
+		exit_error();
+	push_swap(stack_a, size, do_a_bench, 0);
 	free(stack_a);
 	return (0);
 }

@@ -94,25 +94,17 @@ int	*mat_path(int *list_a, int *list_b, int state[2][4], int *matrix)
 	int	*index_for_path;
 
 	index_for_path = malloc(sizeof(int) * 2);
+	index_for_path[0] = 1;
+	index_for_path[1] = 3;
 	if (matrix[0] + matrix[3] == matrix[4])
-	{
 		index_for_path[0] = 0;
-		index_for_path[1] = 3;
-	}
 	else if (matrix[1] + matrix[2] == matrix[4])
-	{
-		index_for_path[0] = 1;
 		index_for_path[1] = 2;
-	}
-	else if (matrix[0] == matrix[4] || matrix[2] == matrix[4])
+	else if ((matrix[0] == matrix[4] && matrix[2] <= matrix[4])
+		|| (matrix[2] == matrix[4] && matrix[0] <= matrix[4]))
 	{
 		index_for_path[0] = 0;
 		index_for_path[1] = 2;
-	}
-	else if (matrix[1] == matrix[4] || matrix[3] == matrix[4])
-	{
-		index_for_path[0] = 1;
-		index_for_path[1] = 3;
 	}
 	sort_path(list_a, list_b, state, index_for_path);
 	return (index_for_path);

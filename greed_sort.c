@@ -28,6 +28,7 @@ void	greed_sort(int *list_a, int *list_b, int state[2][4])
 		if (path[i] == 0)
 			push_b(list_a, list_b, state);
 	}
+	free(path);
 	i = -1;
 	while (state[1][2] != 0)
 	{

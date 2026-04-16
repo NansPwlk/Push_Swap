@@ -18,7 +18,9 @@ SRCS		= push_swap.c \
 			chunk_sort.c \
 			chunk_tools.c \
 			disorder.c \
-			benchmod.c
+			benchmod.c \
+			flags.c \
+			peculiar_case.c
 
 OBJS		= $(SRCS:.c=.o)
 

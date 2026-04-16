@@ -14,7 +14,7 @@
 
 float	compute_disorder(int *list_a, int state[2][4], int who)
 {
-	static	float	disorder;
+	static float	disorder;
 	int				is_error;
 	int				total_pairs;
 	int				i;
@@ -42,10 +42,18 @@ float	compute_disorder(int *list_a, int state[2][4], int who)
 
 void	adapt_choice(int *lst_a, int *lst_b, int state[2][4], float disord)
 {
-	if (disord < 0.2)
+	if (state[0][3] == 2)
+		for_two(lst_a, state);
+	else if (state[0][3] == 3)
+		for_three(lst_a, state);
+	else if (state[0][3] == 4)
+		for_four(lst_a, lst_b, state);
+	else if (state[0][3] == 5)
+		for_five(lst_a, lst_b, state);
+	else if (disord < 0.2 || (int)disord == 12)
 		select_sort(lst_a, lst_b, state);
-	else if (disord >= 0.2 && disord < 0.5)
+	else if ((disord >= 0.2 && disord < 0.5) || (int)disord == 22)
 		chunk_sort(lst_a, lst_b, state);
-	else if (disord >= 0.5)
+	else if (disord >= 0.5 || (int)disord == 32)
 		greed_sort(lst_a, lst_b, state);
 }

@@ -22,8 +22,10 @@ int	swap_a(int *list_a, int state[2][4], int silence)
 	list_a[(state[0][0] + 1) % state[0][3]] = list_a[state[0][0]];
 	list_a[state[0][0]] = temp;
 	if (silence == 0)
+	{
 		write(1, "sa\n", 3);
-	count_op(1);
+		count_op(1);
+	}
 	return (1);
 }
 
@@ -37,8 +39,10 @@ int	swap_b(int *list_b, int state[2][4], int silence)
 	list_b[(state[1][0] + 1) % state[1][3]] = list_b[state[1][0]];
 	list_b[state[1][0]] = temp;
 	if (silence == 0)
+	{
 		write(1, "sb\n", 3);
-	count_op(2);
+		count_op(2);
+	}
 	return (1);
 }
 

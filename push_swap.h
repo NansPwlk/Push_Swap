@@ -17,10 +17,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void		fill_stack_a(int *list_a, int argc, char **argv);
-void		exit_error(void);
+void		fill_stack_a(int *list_a, int argc, char **argv, int i);
+void		exit_error();
 int			main(int argc, char **argv);
-int			push_swap(int *list_a, int size);
+int			push_swap(int *list_a, int size, int do_a_bench, int who);
 int			push_a(int *list_b, int *list_a, int state[2][4]);
 int			push_b(int *list_a, int *list_b, int state[2][4]);
 void		init_state(int state[2][4], int size);
@@ -33,7 +33,6 @@ int			revrot_double(int *list_a, int state[2][4], int *list_b);
 int			swap_a(int *list_a, int state[2][4], int silence);
 int			swap_b(int *list_b, int state[2][4], int silence);
 int			swap_double(int *list_a, int state[2][4], int *list_b);
-void		print_list(int *list_a, int *list_b, int state[2][4]);
 void		greed_sort(int *list_a, int *list_b, int state[2][4]);
 int			free_error(int *scores, int *path, int *next_index);
 int			init_tab(int state[2][4], int *scores, int *next_index, int *path);
@@ -67,5 +66,15 @@ float		compute_disorder(int *list_a, int state[2][4], int who);
 void		adapt_choice(int *lst_a, int *lst_b, int state[2][4], float disord);
 int			handle_miss(int *list_a, int *list_b, int state[2][4], int need_rb);
 int 		*count_op(int wich_one);
-void		benchmod(int *lst_a, int state[2][4]);
+void		benchmod(int *lst_a, int state[2][4], int who);
+void		benchmod_op(int *tl_op);
+int			read_flag(int who);
+int			wich_flag(char *flag, char *flagbis);
+int			do_a_flag(int argc, char **argv, int who);
+void		init_flag(char **flag, char **flagbis, char **argv, int argc);
+int 		is_number(char *do_he);
+int			*for_two(int *list_a, int state[2][4]);
+int			*for_three(int *list_a, int state[2][4]);
+int			*for_four(int *list_a, int *list_b, int state[2][4]);
+int			*for_five(int *list_a, int *list_b, int state[2][4]);
 #endif
